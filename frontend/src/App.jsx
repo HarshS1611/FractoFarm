@@ -37,7 +37,7 @@ import LiveFarmDetails from "./components/liveFarm/liveFarmDetails";
 import Epns from "./dashboard/epns";
 import EpnsOpt from "./dashboard/epnsOpt";
 import SendepnsNotification from "./dashboard/SendepnsNotification.js";
-import Bridge from "./dashboard/Bridge";
+import BridgeComponent from "./dashboard/BridgeComponent";
 
 function App() {
   return (
@@ -56,7 +56,7 @@ function App() {
         <Route path="/live-farm/:BIDSID" element={<LiveFarmDetails />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/bridge" element={<Bridge />} />
+        <Route path="/bridge" element={<BridgeComponent />} />
         <Route path="/epns" element={<Epns />} />
         <Route path="/epnsfeed" element={<Epns />} />
         <Route path="/epnsOpt" element={<EpnsOpt />} />

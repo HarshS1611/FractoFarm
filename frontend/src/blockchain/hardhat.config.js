@@ -9,7 +9,7 @@ require("@nomiclabs/hardhat-ethers");
 const { API_URL, PRIVATE_KEY } = process.env;
 
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.17",
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
@@ -17,6 +17,12 @@ module.exports = {
     },
     polygonMumbai: {
       url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [process.env.PRIVATE_KEY],
+      gas: 2100000,
+      gasPrice: 8000000000,
+    },
+    goerli: {
+      url: "https://rpc.ankr.com/eth_goerli",
       accounts: [process.env.PRIVATE_KEY],
     },
   },
@@ -33,5 +39,4 @@ module.exports = {
       },
     },
   },
-
 };

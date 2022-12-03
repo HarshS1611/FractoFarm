@@ -1,9 +1,11 @@
 // contracts/GameItem.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import {IConnext} from "@connext/nxtp-contracts/contracts/core/connext/interfaces/IConnext.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract NFTContract is ERC721URIStorage {
     using Counters for Counters.Counter;
@@ -20,7 +22,6 @@ contract NFTContract is ERC721URIStorage {
     constructor() ERC721("Nftee", "NTE") {
         admin = msg.sender;
     }
-
     modifier _onlyAdmin() {
         require(msg.sender == admin);
         _;
@@ -186,7 +187,6 @@ contract NFTContract is ERC721URIStorage {
             totalLiquidity: 0
         });
     }
-
     function addProfitToFarm(uint256 farmId)
         public
         payable
@@ -202,4 +202,38 @@ contract NFTContract is ERC721URIStorage {
         uint256 vote,
         uint256 tokenCount
     );
+}
+
+contract Bridge {
+  IConnext public immutable connext;
+  constructor(IConnext _connext) {
+    connext = _connext;
+  }
+  function xTransfer(
+    address recipient,
+    uint32 destinationDomain,
+    address tokenAddress,
+    uint256 amount,
+    uint256 slippage,
+    uint256 relayerFee
+  ) external payable {
+    IERC20 token = IERC20(tokenAddress);
+    require(
+      token.allowance(msg.sender, address(this)) >= amount,
+      "User must approve amount"
+    );
+    token.transferFrom(msg.sender, address(this), amount);
+    // This contract approves transfer to Connext
+    token.approve(address(connext), amount);
+    connext.xcall{value: relayerFee}(
+      destinationDomain, // _destination: Domain ID of the destination chain
+      recipient,         // _to: address receiving the funds on the destination
+      tokenAddress,      // _asset: address of the token contract
+      msg.sender,        // _delegate: address that can revert or forceLocal on destination
+      amount,            // _amount: amount of tokens to transfer
+      slippage,          // _slippage: the maximum amount of slippage the user will accept in BPS
+      ""                 // _callData: empty because we're only sending funds
+    );  
+  }
+
 }
