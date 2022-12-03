@@ -5,6 +5,8 @@ import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 //import { uauth } from '../../auth/Connectors.ts';
 import UAuth from "@uauth/js";
 import { WorldIDWidget,WidgetProps } from "@worldcoin/id";
+//import ENSAddress from '@ensdomains/react-ens-address'
+
 
 const uauth = new UAuth({
   clientID: "f1607235-63e9-4309-a5d3-7c0adda481ed",
@@ -155,6 +157,7 @@ const ConnectWalletContent = () => {
               </div>
             </div>
           </div>
+          {/* <ENSAddress provider={window.web3 || window.ethereum} /> */}
         </div>
       </div>
     </div>
