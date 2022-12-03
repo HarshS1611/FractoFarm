@@ -37,6 +37,7 @@ import LiveFarmDetails from "./components/liveFarm/liveFarmDetails";
 import Epns from "./dashboard/epns";
 import EpnsOpt from "./dashboard/epnsOpt";
 import SendepnsNotification from "./dashboard/SendepnsNotification.js";
+import Bridge from "./dashboard/Bridge";
 
 function App() {
   return (
@@ -50,11 +51,12 @@ function App() {
         <Route path="/featured-items" element={<FeaturedItems />} />
         <Route path="/live-bidding" element={<LiveBidding />} />
         <Route path="/collections" element={<Collections />} />
-      
+
         <Route path="/live-bid/:BIDSID" element={<LiveAuctionDetails />} />
         <Route path="/live-farm/:BIDSID" element={<LiveFarmDetails />} />
-       
+
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/bridge" element={<Bridge />} />
         <Route path="/epns" element={<Epns />} />
         <Route path="/epnsfeed" element={<Epns />} />
         <Route path="/epnsOpt" element={<EpnsOpt />} />
@@ -72,8 +74,6 @@ function App() {
         <Route path="/activity" element={<Activity />} />
         <Route path="/create-new" element={<CreateNew />} />
         <Route path="/connect-wallet" element={<ConnectWallet />} />
-
-      
 
         <Route path="*" element={<NotFound />} />
       </Routes>

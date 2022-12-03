@@ -9,7 +9,7 @@ const SearchForm = () => {
                     <i className="bi bi-search" />
                 </button>
             </Form> */}
-            <NavLink to="/dashboard" className="ft-dd" title="Home" id="Home">Dashboard</NavLink>
+            <NavLink to="/bridge" className="ft-dd" title="Home" id="Home">Dashboard</NavLink>
         </div>
     )
 }

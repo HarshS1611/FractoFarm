@@ -62,30 +62,36 @@ const DashboardHeader = () => {
     const AdminNav = [
       {
         id: 1,
+        path: "/bridge",
+        icon: "bi-speedometer",
+        text: "Bridge",
+      },
+      {
+        id: 2,
         path: "/dashboard",
         icon: "bi-speedometer",
         text: "Dashboard",
       },
       {
-        id: 2,
+        id: 3,
         path: "/epns",
         icon: "bi-speedometer",
         text: "epns inbox",
       },
       {
-        id: 3,
+        id: 4,
         path: "/epnsfeed",
         icon: "bi-speedometer",
         text: "epns feed",
       },
       {
-        id: 4,
+        id: 5,
         path: "/epnsOpt",
         icon: "bi-speedometer",
         text: "epns Opt",
       },
       {
-        id: 2,
+        id: 6,
         path: "/epnsNotify",
         icon: "bi-speedometer",
         text: "epns Send Notifications",
