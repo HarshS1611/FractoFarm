@@ -1,1 +1,1 @@
-export const nftAddress = "0xb18C312782bb0Cf7C5220049509f12a5afdB75AF";
+export const nftAddress = "0xC2ED1CCa692C0dDCbfEcdc97B722Fc848b566583"; export const bridgeAddress = "0x23BbE4B96eaDF3899460dd729da8938aA5ce5fD4";
