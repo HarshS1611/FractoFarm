@@ -47,7 +47,7 @@ const ConnectWalletContent = () => {
   };
 
   const WidgetProps = {
-    actionId: "wid_staging_4cc2853661ce1919f025660764a8d9e5",
+    actionId: "wid_staging_897fc908a76422db0fc65f9578cda7d6",
     signal: "user-id",
     enableTelemetry: true,
     signalDescription: "Receive initial airdrop April 2022",
