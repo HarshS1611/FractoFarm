@@ -5,6 +5,8 @@ import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 //import { uauth } from '../../auth/Connectors.ts';
 import UAuth from "@uauth/js";
 import { WorldIDWidget,WidgetProps } from "@worldcoin/id";
+//import ENSAddress from '@ensdomains/react-ens-address'
+
 
 const uauth = new UAuth({
   clientID: "f1607235-63e9-4309-a5d3-7c0adda481ed",
@@ -45,7 +47,7 @@ const ConnectWalletContent = () => {
   };
 
   const WidgetProps = {
-    actionId: "wid_staging_4cc2853661ce1919f025660764a8d9e5",
+    actionId: "wid_staging_897fc908a76422db0fc65f9578cda7d6",
     signal: "user-id",
     enableTelemetry: true,
     signalDescription: "Receive initial airdrop April 2022",
@@ -155,6 +157,7 @@ const ConnectWalletContent = () => {
               </div>
             </div>
           </div>
+          {/* <ENSAddress provider={window.web3 || window.ethereum} /> */}
         </div>
       </div>
     </div>

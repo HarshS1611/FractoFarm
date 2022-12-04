@@ -21,7 +21,7 @@ const Activity = () => {
     }, [tokens]);
 
     async function fetchData() {
-        const response = await axios.get("https://api.covalenthq.com/v1/80001/tokens/0xe6c5586d13ad0f33f438fa6A4002EA05A48994b5/nft_token_ids/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc");
+        const response = await axios.get("https://api.covalenthq.com/v1/80001/tokens/0xb18C312782bb0Cf7C5220049509f12a5afdB75AF/nft_token_ids/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc");
         console.log(response.data.data.items.length)
         setTokens(response.data.data.items.length)
         for (let i = 1; i <= tokens; i++) {
@@ -30,15 +30,15 @@ const Activity = () => {
         console.log(tokenID)
         const items = await Promise.all(
             tokenID.map(async (item) => {
-                const res = await axios.get(`https://api.covalenthq.com/v1/80001/tokens/0xe6c5586d13ad0f33f438fa6A4002EA05A48994b5/nft_metadata/${item}/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc`);
+                const res = await axios.get(`https://api.covalenthq.com/v1/80001/tokens/0xb18C312782bb0Cf7C5220049509f12a5afdB75AF/nft_metadata/${item}/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc`);
 
                 if (user == JSON.stringify(res.data.data.items[0].nft_data[0].original_owner)) {
-                    console.log(res.data.data.items[0].nft_data[0].original_owner);
+                    console.log(res.data.data.items[0].nft_data[0]);
 
                     let item = {
                         id: res.data.data.items[0].nft_data[0].token_id,
                         name: res.data.data.items[0].nft_data[0].external_data.name,
-                        image: res.data.data.items[0].nft_data[0].external_data.image
+                        image: res.data.data.items[0].nft_data[0].external_data.image_1024
                     };
                     //console.log(item);
                     return item;
@@ -63,11 +63,11 @@ const Activity = () => {
                     <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border">
                         {elem.name}
                     </td>
-                    <td className="text-sm text-gray-900 text-center font-light whitespace-nowrap border">
+                    <td className=" border">
                         <a href={elem.image} target="blank"><img src={elem.image} alt={elem.name} /></a>
                     </td>
                     <td className="text-sm text-gray-900 text-center font-light px-6 py-4 whitespace-nowrap border">
-                        <a href="https://mumbai.polygonscan.com/address/0xe6c5586d13ad0f33f438fa6a4002ea05a48994b5#tokentxnsErc721" target="blank" >
+                        <a href="https://mumbai.polygonscan.com/address/0xb18C312782bb0Cf7C5220049509f12a5afdB75AF#tokentxnsErc721" target="blank" >
                             Link
                         </a>
                     </td>

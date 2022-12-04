@@ -23,6 +23,7 @@ const Dashboard = () => {
         <div className="container w-full">
           <div className="row w-full g-12 space-y-2">
             <div className="flex flex-col my-10 w-full">
+            <Activity />
               {/* Statistics Chart */}
               <StatisticsChart title="Sales" subTitle="Last 10 days" />
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
               <MonthlyVisitorChart title="Monthly Visitors" />
             </div>
             {/* <ActivityTab /> */}
-            <Activity />
+            
           </div>
         </div>
       </div>
