@@ -1,7 +1,7 @@
 import Header from "../components/header/Header";
 import DashboardHeader from "../components/dashboard/header/DashboardHeader";
-import * as EpnsAPI from "@epnsproject/sdk-restapi";
-import { NotificationItem, chainNameType } from "@epnsproject/sdk-uiweb";
+import * as PushAPI from "@pushprotocol/restapi";
+import { NotificationItem, chainNameType } from "@pushprotocol/uiweb";
 import { useEffect, useState } from "react";
 
 const Epns = () => {
@@ -9,7 +9,6 @@ const Epns = () => {
   const [haveMetamask, sethaveMetamask] = useState(true);
   const [accountAddress, setAccountAddress] = useState("");
   const [isConnected, setIsConnected] = useState(false);
-
 
   useEffect(() => {
     if (localStorage.getItem("wallet_address") !== "") {
@@ -19,15 +18,14 @@ const Epns = () => {
       fetchNotifs();
     }
   }, []);
-    const fetchNotifs = async () => {
-      const notifications = await EpnsAPI.user.getFeeds({
-        user: `eip155:42:${accountAddress}`,
-        env: "staging",
-      });
-        setNotifications(notifications);
-      console.log("Notifications: \n\n", notifications);
-    };
-
+  const fetchNotifs = async () => {
+    const notifications = await PushAPI.user.getFeeds({
+      user: `eip155:5:${accountAddress}`,
+      env: "staging",
+    });
+    setNotifications(notifications);
+    console.log("Notifications: \n\n", notifications);
+  };
 
   return (
     <>

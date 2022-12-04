@@ -24,7 +24,7 @@ function SendepnsNotification() {
 
   const sendNotification = async () => {
     try {
-      const apiResponse = await EpnsAPI.payloads.sendNotification({
+      const apiResponse = await PushAPI.payloads.sendNotification({
         signer,
         type: 1, 
         identityType: 2, 

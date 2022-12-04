@@ -33,7 +33,7 @@ export default function Header() {
               src={`${process.env.PUBLIC_URL}/${darkLogo}`}
               alt="Dark"
             /> */}
-            <h1 className="text-black">Fracto Farm</h1>
+            <h1 className="text-white">Fracto Farm</h1>
           </Link>
 
           {/* Navbar Toggler */}

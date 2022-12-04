@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ethers } from "ethers";
 
@@ -69,7 +69,7 @@ function EpnsOpt() {
 
   const OptIn = async (elem, user) => {
     try {
-      await EpnsAPI.channels.subscribe({
+      await PushAPI.channels.subscribe({
         signer: _signer,
         channelAddress: `eip155:42:${elem.owner}`,
         userAddress: `eip155:42:${user}`,
@@ -89,7 +89,7 @@ function EpnsOpt() {
   };
   const OptOut = async (elem, user) => {
     try {
-      await EpnsAPI.channels.unsubscribe({
+      await PushAPI.channels.unsubscribe({
         signer: _signer,
         channelAddress: `eip155:42:${elem.owner}`,
         userAddress: `eip155:42:${user}`,
@@ -109,7 +109,7 @@ function EpnsOpt() {
   };
   const Subscriptions = async (elem, user) => {
     try {
-      const subscriptions = await EpnsAPI.user.getSubscriptions({
+      const subscriptions = await PushAPI.user.getSubscriptions({
         user: `eip155:42:${user}`, // user address in CAIP
         env: "staging",
       });
