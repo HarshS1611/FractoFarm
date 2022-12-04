@@ -21,7 +21,7 @@ const Activity = () => {
     }, [tokens]);
 
     async function fetchData() {
-        const response = await axios.get("https://api.covalenthq.com/v1/80001/tokens/0xb18C312782bb0Cf7C5220049509f12a5afdB75AF/nft_token_ids/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc");
+        const response = await axios.get("https://api.covalenthq.com/v1/80001/tokens/0xa2559755b18f93Cf87a4Db27d5C076097727783e/nft_token_ids/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc");
         console.log(response.data.data.items.length)
         setTokens(response.data.data.items.length)
         for (let i = 1; i <= tokens; i++) {
@@ -30,7 +30,7 @@ const Activity = () => {
         console.log(tokenID)
         const items = await Promise.all(
             tokenID.map(async (item) => {
-                const res = await axios.get(`https://api.covalenthq.com/v1/80001/tokens/0xb18C312782bb0Cf7C5220049509f12a5afdB75AF/nft_metadata/${item}/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc`);
+                const res = await axios.get(`https://api.covalenthq.com/v1/80001/tokens/0xa2559755b18f93Cf87a4Db27d5C076097727783e/nft_metadata/${item}/?quote-currency=USD&format=JSON&key=ckey_d602af5fb4154aa5ace006300cc`);
 
                 if (user == JSON.stringify(res.data.data.items[0].nft_data[0].original_owner)) {
                     console.log(res.data.data.items[0].nft_data[0]);
@@ -67,7 +67,7 @@ const Activity = () => {
                         <a href={elem.image} target="blank"><img src={elem.image} alt={elem.name} /></a>
                     </td>
                     <td className="text-sm text-gray-900 text-center font-light px-6 py-4 whitespace-nowrap border">
-                        <a href="https://mumbai.polygonscan.com/address/0xb18C312782bb0Cf7C5220049509f12a5afdB75AF#tokentxnsErc721" target="blank" >
+                        <a href="https://mumbai.polygonscan.com/address/0xa2559755b18f93Cf87a4Db27d5C076097727783e#tokentxnsErc721" target="blank" >
                             Link
                         </a>
                     </td>
